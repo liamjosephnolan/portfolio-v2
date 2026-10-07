@@ -28,4 +28,21 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { projects };
+// One Markdown file per side project. Each file builds a card in the Side
+// projects grid and a /side-projects/<slug> page, ordered by `order`. Kept out
+// of `projects` so side projects never appear in the carousel.
+const sideProjects = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/side-projects" }),
+  schema: z.object({
+    title: z.string(),
+    caption: z.string(),
+    date: z.string(),
+    order: z.number(),
+    image: z.string(),
+    alt: z.string(),
+    links: z.array(z.object({ title: z.string(), url: z.string() })).default([]),
+    todo: z.string().optional(),
+  }),
+});
+
+export const collections = { projects, sideProjects };

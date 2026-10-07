@@ -13,7 +13,7 @@ npm run preview
 ## Editing content
 
 - `src/content/projects/*.md`: one file per main work item (carousel slide + `/projects/<file-name>/` page), ordered by `order`.
-- `src/data/side-projects.json`: side project cards.
+- `src/content/side-projects/*.md`: one file per side project (grid card + `/side-projects/<file-name>/` page), ordered by `order`. Images used inside a write-up go in `src/assets/side/` and are referenced by relative path (`../../assets/side/x.webp`).
 - `src/content/site.json`: name, tagline, navigation, socials, About, Resume and Contact copy, 404 ring images.
 - Images live in `public/assets/`. Reference them as `/assets/...`; `url()` in `src/lib/site.ts` adds the `/portfolio-v2` base path.
 - Colors and type are tokens in `src/styles/global.css`.

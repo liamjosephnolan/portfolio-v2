@@ -1,7 +1,8 @@
 ---
-import { site, sideProjects, url } from "../../lib/site";
+import { getSideProjects, site, url } from "../../lib/site";
 import ScrollFade from "../ScrollFade.astro";
 import Icon from "../Icon.astro";
+const sideProjects = await getSideProjects();
 ---
 <section id="side-projects" class="side container">
   <div class="side-head">
@@ -11,16 +12,16 @@ import Icon from "../Icon.astro";
   </div>
   <ScrollFade>
     <ul class="side-grid">
-      {sideProjects.map((p) => (
+      {sideProjects.map(({ id, data: p }) => (
         <li>
-          <a class="side-card" href={p.link} target="_blank" rel="noreferrer">
+          <a class="side-card" href={url(`/side-projects/${id}/`)}>
             <div class="side-media">
               <img src={url(p.image)} alt={p.alt} loading="lazy" decoding="async" />
-              {"todo" in p && <span class="side-todo caption">{p.todo}</span>}
+              {p.todo && <span class="side-todo caption">{p.todo}</span>}
             </div>
             <div class="side-text">
               <h3 class="h4">{p.title}</h3>
-              <p class="body muted">{p.text}</p>
+              <p class="body muted">{p.caption}</p>
             </div>
             <span class="side-arrow" aria-hidden="true"><Icon name="arrow-up-right" size={18} /></span>
           </a>

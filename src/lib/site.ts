@@ -1,13 +1,17 @@
 import data from "../content/site.json";
-import sideProjects from "../data/side-projects.json";
 import { getCollection } from "astro:content";
 
 export const site = data;
-export { sideProjects };
 
 /** Projects in display order, used by the carousel and the case study pages. */
 export async function getProjects() {
   const all = await getCollection("projects");
+  return all.sort((a, b) => a.data.order - b.data.order);
+}
+
+/** Side projects in display order, used by the grid and the side project pages. */
+export async function getSideProjects() {
+  const all = await getCollection("sideProjects");
   return all.sort((a, b) => a.data.order - b.data.order);
 }
 
