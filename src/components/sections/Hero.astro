@@ -19,6 +19,7 @@ const n = slides.length;
     <div style="width: 100%; position: relative; display: flex; flex-direction: column; align-items: center">
       <div class="pc-root" style={`--n: ${n}`} data-carousel>
         <div class="pc-sticky">
+          <canvas class="pc-canvas" aria-hidden="true"></canvas>
           <div class="pc-media">
             {slides.map((s, i) => (
               <div class="pc-slide" style={`--i: ${i}`} data-slide>

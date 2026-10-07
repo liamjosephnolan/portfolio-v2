@@ -1,29 +1,22 @@
 ---
 import { existsSync } from "node:fs";
 import { site, url } from "../../lib/site";
+import resume from "../../data/resume.json";
 import ScrollWords from "../ScrollWords.astro";
+import ScrollFade from "../ScrollFade.astro";
 import Icon from "../Icon.astro";
-const { resume } = site;
 // The PDF is not in git: the deploy workflow fetches it from the private
 // resume repo into public/ before the build. Without it, show a placeholder.
-const hasPdf = existsSync(`public${resume.file}`);
-const pdf = url(resume.file);
+const hasPdf = existsSync(`public${site.resume.file}`);
+const pdf = url(site.resume.file);
 ---
 <section id="resume" class="resume container">
   <div class="resume-head">
     <div class="resume-left">
       <p class="body muted">RESUME</p>
-      <ScrollWords as="h2" class="h2 balance" text={resume.summary} />
+      <ScrollWords as="h2" class="h2 balance" text={site.resume.summary} />
     </div>
     <div class="resume-right">
-      <dl class="resume-facts">
-        {resume.facts.map((f) => (
-          <div class="resume-fact">
-            <dt class="body muted">{f.label}</dt>
-            <dd class="body">{f.value}</dd>
-          </div>
-        ))}
-      </dl>
       {hasPdf ? (
         <a class="btn" href={pdf} download>
           <span class="body-sb">Download resume (PDF)</span>
@@ -34,11 +27,82 @@ const pdf = url(resume.file);
       )}
     </div>
   </div>
-  {hasPdf && (
-    <div class="resume-embed">
-      <object data={pdf} type="application/pdf" aria-label={`${site.name} resume`}>
-        <p class="body">Your browser can’t show the PDF here. <a href={pdf} style="color: var(--white)">Download it instead</a>.</p>
-      </object>
+
+  <ol class="tl" data-timeline>
+    <span class="tl-track" aria-hidden="true"><span class="tl-fill" data-tl-fill></span></span>
+    {resume.experience.map((e) => (
+      <li class="tl-item" data-tl-item>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-when">
+          <p class="body-sb">{e.dates}</p>
+          <p class="caption muted">{e.place}</p>
+          {"tag" in e && e.tag && <span class="tl-tag caption">{e.tag}</span>}
+        </div>
+        <ScrollFade>
+          <div class="tl-what">
+            <h3 class="h4">{e.role}</h3>
+            <p class="body tl-org">{e.org}</p>
+            {"context" in e && e.context && <p class="body muted">{e.context}</p>}
+            <ul class="tl-points">
+              {e.highlights.map((h) => <li class="body">{h}</li>)}
+            </ul>
+          </div>
+        </ScrollFade>
+      </li>
+    ))}
+  </ol>
+
+  <ScrollFade>
+    <div class="resume-grid">
+      <div class="resume-block">
+        <p class="body muted">EDUCATION</p>
+        {resume.education.map((ed) => (
+          <div class="resume-entry">
+            <p class="body-sb" style="color: var(--white)">{ed.degree}</p>
+            <p class="body">{ed.school}</p>
+            <p class="caption muted">{ed.dates}</p>
+          </div>
+        ))}
+      </div>
+      <div class="resume-block">
+        <p class="body muted">PUBLICATIONS & PATENTS</p>
+        {resume.publications.map((p) => <p class="body resume-entry">{p}</p>)}
+        <p class="body muted">LANGUAGES</p>
+        <p class="body">{resume.languages}</p>
+      </div>
+      <div class="resume-block">
+        <p class="body muted">SKILLS</p>
+        {resume.skills.map((g) => (
+          <div class="resume-entry">
+            <p class="caption muted">{g.group}</p>
+            <ul class="chips">{g.items.map((s) => <li class="caption">{s}</li>)}</ul>
+          </div>
+        ))}
+      </div>
     </div>
-  )}
+  </ScrollFade>
 </section>
+
+<script>
+  import { onScrollFrame, reducedMotion } from "../../scripts/lib";
+
+  // Timeline progress: the line fills as the section scrolls past the middle
+  // of the viewport, and each role's dot lights up once the line reaches it.
+  document.querySelectorAll<HTMLElement>("[data-timeline]").forEach((tl) => {
+    const fill = tl.querySelector<HTMLElement>("[data-tl-fill]")!;
+    const items = Array.from(tl.querySelectorAll<HTMLElement>("[data-tl-item]"));
+    if (reducedMotion()) {
+      fill.style.transform = "scaleY(1)";
+      items.forEach((it) => it.classList.add("is-on"));
+      return;
+    }
+    onScrollFrame(() => {
+      const r = tl.getBoundingClientRect();
+      const mid = window.innerHeight * 0.55;
+      const p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
+      fill.style.transform = `scaleY(${p.toFixed(4)})`;
+      const reach = r.top + p * r.height;
+      items.forEach((it) => it.classList.toggle("is-on", it.getBoundingClientRect().top + 8 <= reach));
+    });
+  });
+</script>

@@ -14,19 +14,44 @@ const sideProjects = await getSideProjects();
     <ul class="side-grid">
       {sideProjects.map(({ id, data: p }) => (
         <li>
-          <a class="side-card" href={url(`/side-projects/${id}/`)}>
-            <div class="side-media">
-              <img src={url(p.image)} alt={p.alt} loading="lazy" decoding="async" />
-              {p.todo && <span class="side-todo caption">{p.todo}</span>}
+          <a class="pcard side-flip" href={url(`/side-projects/${id}/`)} aria-label={`${p.title}: ${p.caption}`} data-pcard>
+            <div class="pcard-inner">
+              <div class="pcard-face pcard-front side-front">
+                <img src={url(p.image)} alt="" loading="lazy" decoding="async" />
+                <div class="side-front-text">
+                  <h3 class="h4">{p.title}</h3>
+                  <p class="caption">{p.date}</p>
+                </div>
+                {p.todo && <span class="side-todo caption">{p.todo}</span>}
+              </div>
+              <div class="pcard-face pcard-back side-back-face">
+                <img src={url(p.image)} alt="" loading="lazy" decoding="async" />
+                <div class="side-back-text">
+                  <h3 class="h4">{p.title}</h3>
+                  <p class="body">{p.caption}</p>
+                </div>
+                <span class="side-view body-sb">View project <Icon name="arrow-up-right" size={18} /></span>
+              </div>
             </div>
-            <div class="side-text">
-              <h3 class="h4">{p.title}</h3>
-              <p class="body muted">{p.caption}</p>
-            </div>
-            <span class="side-arrow" aria-hidden="true"><Icon name="arrow-up-right" size={18} /></span>
           </a>
         </li>
       ))}
     </ul>
   </ScrollFade>
 </section>
+
+<script>
+  // Card flip (port of the theme's PrincipleCard.tsx): hover on pointer devices.
+  // On touch the first tap flips the card and the second tap opens the project.
+  const canHover = window.matchMedia("(hover: hover)");
+  document.querySelectorAll<HTMLElement>("[data-pcard]").forEach((card) => {
+    card.addEventListener("mouseenter", () => canHover.matches && card.classList.add("is-flipped"));
+    card.addEventListener("mouseleave", () => canHover.matches && card.classList.remove("is-flipped"));
+    card.addEventListener("click", (e) => {
+      if (canHover.matches || card.classList.contains("is-flipped")) return;
+      e.preventDefault();
+      document.querySelectorAll("[data-pcard].is-flipped").forEach((c) => c.classList.remove("is-flipped"));
+      card.classList.add("is-flipped");
+    });
+  });
+</script>

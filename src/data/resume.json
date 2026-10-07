@@ -1,0 +1,99 @@
+{
+  "experience": [
+    {
+      "role": "Senior Mechatronics Engineer",
+      "org": "Rockslice",
+      "place": "Bergen, NO",
+      "dates": "Sept 2025 – present",
+      "tag": "Full time",
+      "context": "National Startup Award 2024 winner: explosive-free robotic rock and concrete cutting.",
+      "highlights": [
+        "First engineering hire, owning design, prototyping and testing",
+        "Redesigned the patented water-turbine sword saw: 10× cheaper, 20 → 10 kg, cut depth 1 → 1.5 m",
+        "Designed a 3-DoF robotic sword positioner for flush, square-cornered cuts in confined spaces",
+        "Leading the company’s first customer pilot project (December 2026)"
+      ]
+    },
+    {
+      "role": "Industrial PhD Candidate",
+      "org": "NTNU, Field Robotics Lab",
+      "place": "Department of Mechanical and Industrial Engineering",
+      "dates": "Autumn 2026 – present",
+      "tag": "Alongside Rockslice",
+      "context": "Research Council of Norway industrial PhD, in partnership with Rockslice.",
+      "highlights": [
+        "Proposed thesis: Optimizing Material Removal Rates in Robotic Stone and Concrete Cutting through Advanced Control and Material Sensing"
+      ]
+    },
+    {
+      "role": "Master’s Thesis",
+      "org": "MCI",
+      "place": "Innsbruck, AT",
+      "dates": "2024 – 2025",
+      "context": "ROS 2-based Implementation of Advanced Control for a Teleoperated Surgical Robot.",
+      "highlights": [
+        "Ported a surgical teleoperation robot to ROS 2 / micro-ROS in C++",
+        "Gain-scheduled LQR and LQI + feedforward control from closed-loop PRBS system identification",
+        "Reduced mean tracking error by 94% (pitch) and 74% (roll) vs. proportional control",
+        "First-author paper at IEEE ICARM 2026"
+      ]
+    },
+    {
+      "role": "Mechanical Engineer",
+      "org": "Ethicon Inc. (formerly Auris)",
+      "place": "Santa Clara, CA",
+      "dates": "2019 – 2023",
+      "context": "Johnson & Johnson surgical robotics: the Ottava soft-tissue surgical robot.",
+      "highlights": [
+        "Project lead of the patented surgeon console immobilization system",
+        "Designed, tested and implemented robotic subsystems",
+        "Managed the capital equipment packaging project as team lead",
+        "Diagnosed and debugged system-level mechanical and software issues in clinical settings"
+      ]
+    },
+    {
+      "role": "Mechanical Engineering Intern",
+      "org": "Ethicon Inc. (formerly Auris)",
+      "place": "Santa Clara, CA",
+      "dates": "2018",
+      "highlights": [
+        "Designed and manufactured an immobilization actuator for a surgical system",
+        "Assembled, tested and characterized robotic arm performance"
+      ]
+    },
+    {
+      "role": "Mechanical Engineering Intern",
+      "org": "Orbital ATK",
+      "place": "Goleta, CA",
+      "dates": "2017",
+      "highlights": [
+        "Prototyped assembly methods for satellite deployables",
+        "Assembled and tested engineering development units"
+      ]
+    },
+    {
+      "role": "Mechanical Engineering Intern",
+      "org": "Breedt",
+      "place": "Kent, WA",
+      "dates": "2015 – 2016",
+      "highlights": [
+        "Designed, manufactured and tested large-scale industrial tooling",
+        "Mechanical and electrical design of a robotic hydroponic foam cutter"
+      ]
+    }
+  ],
+  "education": [
+    { "degree": "M.Sc. Mechatronics", "school": "MCI, Innsbruck, Austria", "dates": "Oct 2023 – Jul 2025" },
+    { "degree": "B.Sc. Aerospace Engineering", "school": "Cal Poly San Luis Obispo, USA", "dates": "Sept 2015 – Jun 2019" }
+  ],
+  "publications": [
+    "L. Nolan, M. Messner, S. Winkler, Y. Kim, “Implementation of an Advanced Control System for a Teleoperated Surgical Robot Using ROS 2,” IEEE ICARM 2026.",
+    "Surgeon console immobilization system, Ethicon Inc. Patents US20230390010A1 and WO2023238053A1."
+  ],
+  "skills": [
+    { "group": "Robotics & controls", "items": ["ROS 2", "micro-ROS", "Gazebo", "RViz", "LQR / LQI", "System ID", "Simulink", "MATLAB", "Python", "C++", "OpenCV", "Linux", "Git", "GitHub Actions"] },
+    { "group": "Mechanical design", "items": ["SolidWorks", "Onshape", "Inventor", "Fusion 360", "GD&T", "DFMEA", "FEA", "Ansys"] },
+    { "group": "Manufacturing", "items": ["CNC", "Mastercam", "Fusion CAM", "BobCAM", "3D printing", "Waterjet", "Laser cutting"] }
+  ],
+  "languages": "English (native) · Norwegian (basic) · German (basic)"
+}

@@ -48,31 +48,8 @@
     ]
   },
   "resume": {
-    "heading": "Resume",
     "summary": "Mechatronics engineer with 6+ years in surgical and construction robotics, working full time at Rockslice while pursuing an industrial PhD at NTNU.",
-    "file": "/resume/LiamNolanCV.pdf",
-    "facts": [
-      {
-        "label": "Full time",
-        "value": "Senior Mechatronics Engineer, Rockslice (Sept 2025 – present)"
-      },
-      {
-        "label": "Alongside",
-        "value": "Industrial PhD Candidate, NTNU Field Robotics Lab, in partnership with Rockslice (Autumn 2026 – present)"
-      },
-      {
-        "label": "Before",
-        "value": "Mechanical Engineer, Ethicon (formerly Auris), Ottava surgical robot (2019 – 2023)"
-      },
-      {
-        "label": "Education",
-        "value": "M.Sc. Mechatronics, MCI Innsbruck · B.Sc. Aerospace Engineering, Cal Poly SLO"
-      },
-      {
-        "label": "Publications & patents",
-        "value": "IEEE ICARM 2026 (first author) · Patents US20230390010A1, WO2023238053A1"
-      }
-    ]
+    "file": "/resume/LiamNolanCV.pdf"
   },
   "sideProjects": {
     "heading": "Side projects",
