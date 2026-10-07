@@ -207,7 +207,6 @@ button { font: inherit; }
 .footer-col { width: 350px; display: flex; flex-direction: column; gap: 20px; align-items: flex-end; text-align: end; }
 .footer-col a { width: 100%; }
 .footer-social a, .footer-nav a { color: var(--white-60); transition: color 0.2s ease; }
-.footer-wordmark { position: relative; z-index: 1; width: 100%; overflow: clip; font-weight: 700; line-height: 1em; letter-spacing: 0; color: var(--grey); text-align: center; white-space: nowrap; }
 .footer-bottom { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; }
 @media (hover: hover) and (pointer: fine) { .footer-social a:hover { color: var(--white); } .footer-nav a:hover { color: var(--white); } }
 @media (max-width: 1199px) { .footer-col { width: auto; } .footer-col a { width: auto; } }
@@ -307,7 +306,10 @@ button { font: inherit; }
 .side-links { display: flex; flex-wrap: wrap; gap: 16px; }
 .side-links a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
 .side-cover { height: auto; max-height: 700px; aspect-ratio: 16 / 9; background: var(--surface); }
-.side-cover img { object-fit: contain; }
+.side-cover { position: relative; }
+/* Portrait or odd-ratio images: fill the frame with a blurred copy instead of bars. */
+.side-cover .side-cover-bg { position: absolute; inset: 0; object-fit: cover; filter: blur(40px) brightness(0.45); transform: scale(1.2); }
+.side-cover .side-cover-img { position: relative; object-fit: contain; }
 .side-article { width: 100%; max-width: 760px; gap: 18px; }
 .side-article h2, .side-article h3 { color: var(--white); font-weight: 600; letter-spacing: -0.03em; line-height: 1.3em; margin-top: 16px; }
 .side-article h2 { font-size: 32px; } .side-article h3 { font-size: 22px; }

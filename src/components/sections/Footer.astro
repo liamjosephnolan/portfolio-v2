@@ -14,25 +14,8 @@ import { site, url } from "../../lib/site";
       {site.nav.map((l) => <a class="body" href={url(l.href)}>{l.label}</a>)}
     </nav>
   </div>
-  <div class="footer-wordmark container" style="font-size: 160px" data-fit>
-    <span aria-hidden="true" data-probe style="position: absolute; visibility: hidden; white-space: nowrap; font-size: 100px; font-weight: 700; letter-spacing: 0">{site.name}</span>
-    <p style="font-weight: 700; line-height: 1em">{site.name}</p>
-  </div>
   <div class="footer-bottom container">
     <p class="caption"><span class="muted">© {site.year} {site.name}. All rights reserved.</span></p>
   </div>
 </footer>
 
-<script>
-  // Framer "auto-fit" text: the wordmark is sized to span the container width.
-  document.querySelectorAll<HTMLElement>("[data-fit]").forEach((box) => {
-    const probe = box.querySelector<HTMLElement>("[data-probe]")!;
-    const fit = () => {
-      const w = probe.getBoundingClientRect().width;
-      if (w > 0) box.style.fontSize = `${(box.clientWidth / w) * 100}px`;
-    };
-    fit();
-    new ResizeObserver(fit).observe(box);
-    document.fonts?.ready.then(fit);
-  });
-</script>

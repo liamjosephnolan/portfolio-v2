@@ -39,7 +39,10 @@ const { Content } = await render(project);
           )}
         </div>
       </div>
-      <div class="project-cover side-cover"><img src={url(p.image)} alt={p.alt} /></div>
+      <div class="project-cover side-cover">
+        <img class="side-cover-bg" src={url(p.image)} alt="" aria-hidden="true" />
+        <img class="side-cover-img" src={url(p.image)} alt={p.alt} />
+      </div>
       <article class="side-article project-md">
         <Content />
       </article>
