@@ -4,8 +4,8 @@ import { clamp, reducedMotion, scrollToY } from "./lib";
  * Project Carousel (port of the Framer code component ProjectCarousel.tsx).
  * The stage is pinned; one smoothed scroll value drives the cover planes and
  * the HTML title overlays together. With WebGL the covers are drawn as planes
- * curved onto a cylinder, with a liquid + chromatic-aberration shader that
- * reacts to scroll velocity only (no idle sway at rest). Titles move 1:1 and
+ * curved onto a cylinder, with a liquid shader that reacts to scroll velocity
+ * only (no idle sway at rest, no chromatic aberration). Titles move 1:1 and
  * reveal letter by letter; images trail slightly. Without WebGL the flat
  * [data-slide] elements are moved instead.
  */
@@ -14,7 +14,6 @@ const CFG = {
   parallax: 0.8,
   smoothness: 0.16,
   distortion: 2.6,
-  chroma: 1.3,
   maxWidth: 1400,
   radius: 20,
   tint: 0.4,
@@ -47,7 +46,6 @@ uniform float uImgA;
 uniform float uBoxA;
 uniform float uTime;
 uniform float uAmp;
-uniform float uChroma;
 uniform float uVel;
 uniform float uTint;
 uniform vec2 uPlanePx;
@@ -65,12 +63,7 @@ void main(){
   flow.x = sin(uv.y * 9.0 + uTime * 1.3) * 0.012 * v;
   flow.y = cos(uv.x * 7.0 - uTime * 1.05) * 0.012 * v;
   uv += flow;
-  float ch = uChroma * (0.003 + mv * 0.004);
-  vec2 dir = vec2(ch, ch * 0.35);
-  float r = texture2D(uTex, uv + dir).r;
-  float g = texture2D(uTex, uv).g;
-  float b = texture2D(uTex, uv - dir).b;
-  vec3 col = vec3(r, g, b) * (1.0 - uTint);
+  vec3 col = texture2D(uTex, uv).rgb * (1.0 - uTint);
   vec2 halfP = uPlanePx * 0.5;
   vec2 p = (vUv - 0.5) * uPlanePx;
   float rr = min(uRadiusPx, min(halfP.x, halfP.y));
@@ -130,7 +123,7 @@ function setupGL(canvas: HTMLCanvasElement, slides: HTMLElement[]) {
   const uni = {
     uHalf: u("uHalf"), uRes: u("uRes"), uAngle: u("uAngle"), uRadius: u("uRadius"), uPersp: u("uPersp"),
     uTex: u("uTex"), uImgA: u("uImgA"), uBoxA: u("uBoxA"), uTime: u("uTime"), uAmp: u("uAmp"),
-    uChroma: u("uChroma"), uVel: u("uVel"), uTint: u("uTint"), uPlanePx: u("uPlanePx"), uRadiusPx: u("uRadiusPx"),
+    uVel: u("uVel"), uTint: u("uTint"), uPlanePx: u("uPlanePx"), uRadiusPx: u("uRadiusPx"),
   };
 
   const newTexture = () => {
@@ -172,7 +165,7 @@ function setupGL(canvas: HTMLCanvasElement, slides: HTMLElement[]) {
   resize();
   window.addEventListener("resize", resize);
 
-  const { curve, maxWidth, radius, tint, distortion, chroma } = CFG;
+  const { curve, maxWidth, radius, tint, distortion } = CFG;
 
   /** Draw every plane near the viewport. `offsets[i]` is slide i's distance from centre in px. */
   return (offsets: number[], vel: number, t: number, sizePct: { w: number; h: number }) => {
@@ -195,7 +188,6 @@ function setupGL(canvas: HTMLCanvasElement, slides: HTMLElement[]) {
     gl.uniform1f(uni.uBoxA, planeW / planeH);
     gl.uniform1f(uni.uTime, t);
     gl.uniform1f(uni.uAmp, distortion);
-    gl.uniform1f(uni.uChroma, chroma);
     gl.uniform1f(uni.uVel, vel * 0.03);
     gl.uniform1f(uni.uTint, tint);
 
