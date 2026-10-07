@@ -1,52 +1,43 @@
-# Elias Vent, an Astro portfolio theme
+# portfolio-v2
 
-A dark, motion-led portfolio theme for product and motion designers. Static output, no framework runtime: every interaction is a small vanilla TypeScript module.
-
-## Features
-
-- WebGL cylinder carousel in the hero: project covers curve on a cylinder with a liquid and chromatic shader that reacts to scroll speed. Falls back to plain images without WebGL.
-- Lenis smooth scrolling
-- Scroll-scrubbed word and block reveals, portrait parallax
-- Awards list with a cover image that follows the cursor
-- 3D flip cards, a looping ticker, a pinned services switcher, an image fly-in gallery
-- FAQ accordion, contact form with loading and success states
-- Liquid gradient shader in the footer
-- Case study pages generated from Markdown, with a "next project" link
-- 404 page with a spinning image ring
-- Honours `prefers-reduced-motion`: smooth scrolling, idle animation and reveals are switched off
-- Sora font, self-hosted through Fontsource
-
-## Getting started
+Test portfolio site for Liam Nolan, built with Astro. Deployed to GitHub Pages at
+https://liamjosephnolan.com/portfolio-v2/.
 
 ```sh
 npm install
-npm run dev      # http://localhost:4321
+npm run dev      # http://localhost:4321/portfolio-v2/
 npm run build    # outputs to dist/
-npm run preview  # serves dist/
+npm run preview
 ```
 
 ## Editing content
 
-- `src/content/site.json` holds all site copy: name, tagline, navigation, socials, awards, principles, services, gallery, FAQ, contact text and the 404 ring images.
-- `src/content/projects/*.md` holds one file per case study. The frontmatter fields (title, category, order, role, timeline, year, overview, challenge, images) drive both the home carousel and `/projects/<file-name>`. Any Markdown body renders under the overview (the demo files leave it empty, matching the original).
-- Images live in `public/assets/`.
-- Colors, type scale and layout live in `src/styles/global.css`.
+- `src/content/projects/*.md`: one file per main work item (carousel slide + `/projects/<file-name>/` page), ordered by `order`.
+- `src/data/side-projects.json`: side project cards.
+- `src/content/site.json`: name, tagline, navigation, socials, About, Resume and Contact copy, 404 ring images.
+- Images live in `public/assets/`. Reference them as `/assets/...`; `url()` in `src/lib/site.ts` adds the `/portfolio-v2` base path.
+- Colors and type are tokens in `src/styles/global.css`.
 
-The contact form has no backend. Point it at your form service in `src/components/sections/Contact.astro`.
+Search for `TODO:` to find placeholder text and images.
 
-## Environment variables
+## Resume
 
-Both are off by default. Set them to `true` to enable.
+The resume PDF is not committed. The deploy workflow fetches `LiamNolanCV.pdf` from the private
+`liamjosephnolan/resume` repo with the `WEBSITE_REPO_TOKEN` secret and puts it in `public/resume/`
+(gitignored) before the build. Without it the site shows a placeholder. To test locally:
 
-| Variable | Effect |
-| --- | --- |
-| `PUBLIC_VERCEL_ANALYTICS` | Loads Vercel Web Analytics and Speed Insights |
-| `PUBLIC_STORE_BADGE` | Shows the fixed store badge in the corner |
+```sh
+mkdir -p public/resume
+gh api -H "Accept: application/vnd.github.raw" repos/liamjosephnolan/resume/contents/LiamNolanCV.pdf > public/resume/LiamNolanCV.pdf
+```
 
 ## Deploy
 
-The build is plain static files in `dist/`, so it runs on any static host. On Vercel or Netlify, import the repo and keep the defaults (build command `npm run build`, output `dist`). Update `site` in `astro.config.mjs` to your domain so canonical and Open Graph URLs are correct.
+`.github/workflows/deploy.yml` builds with `withastro/action` and deploys with `actions/deploy-pages`
+on every push to `main`. Settings → Pages → Source must be "GitHub Actions".
 
-## License and credits
+## Credits
 
-MIT, see `LICENSE`. Sora is by Jonathan Barnbrook and Julián Moncada, licensed under the SIL Open Font License 1.1. Placeholder images are for demo purposes only; replace them with your own work.
+Based on the [Elias Vent](https://github.com/agnilem/elias-vent-astro) Astro theme (MIT, see `LICENSE`),
+with the WebGL carousel, footer shader and several sections removed. Sora is by Jonathan Barnbrook and
+Julián Moncada, licensed under the SIL Open Font License 1.1.

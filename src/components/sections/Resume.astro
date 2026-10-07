@@ -1,0 +1,44 @@
+---
+import { existsSync } from "node:fs";
+import { site, url } from "../../lib/site";
+import ScrollWords from "../ScrollWords.astro";
+import Icon from "../Icon.astro";
+const { resume } = site;
+// The PDF is not in git: the deploy workflow fetches it from the private
+// resume repo into public/ before the build. Without it, show a placeholder.
+const hasPdf = existsSync(`public${resume.file}`);
+const pdf = url(resume.file);
+---
+<section id="resume" class="resume container">
+  <div class="resume-head">
+    <div class="resume-left">
+      <p class="body muted">RESUME</p>
+      <ScrollWords as="h2" class="h2 balance" text={resume.summary} />
+    </div>
+    <div class="resume-right">
+      <dl class="resume-facts">
+        {resume.facts.map((f) => (
+          <div class="resume-fact">
+            <dt class="body muted">{f.label}</dt>
+            <dd class="body">{f.value}</dd>
+          </div>
+        ))}
+      </dl>
+      {hasPdf ? (
+        <a class="btn" href={pdf} download>
+          <span class="body-sb">Download resume (PDF)</span>
+          <Icon name="arrow-up-right" size={20} />
+        </a>
+      ) : (
+        <p class="body muted resume-missing">Resume PDF not available in this build.</p>
+      )}
+    </div>
+  </div>
+  {hasPdf && (
+    <div class="resume-embed">
+      <object data={pdf} type="application/pdf" aria-label={`${site.name} resume`}>
+        <p class="body">Your browser can’t show the PDF here. <a href={pdf} style="color: var(--white)">Download it instead</a>.</p>
+      </object>
+    </div>
+  )}
+</section>

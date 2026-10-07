@@ -5,7 +5,7 @@ import Topbar from "../../components/Topbar.astro";
 import Contact from "../../components/sections/Contact.astro";
 import Footer from "../../components/sections/Footer.astro";
 import Icon from "../../components/Icon.astro";
-import { getProjects, site } from "../../lib/site";
+import { getProjects, site, url } from "../../lib/site";
 
 export async function getStaticPaths() {
   const projects = await getProjects();
@@ -30,10 +30,10 @@ const hasBody = Boolean(project.body?.trim());
         <div class="project-meta">
           <div class="project-meta-col"><p class="body muted">Role</p><p class="body">{p.role}</p></div>
           <div class="project-meta-col"><p class="body muted">Timeline</p><p class="body">{p.timeline}</p></div>
-          <div class="project-meta-col"><p class="body muted">Completed</p><p class="body">{p.year}</p></div>
+          <div class="project-meta-col"><p class="body muted">Year</p><p class="body">{p.year}</p></div>
         </div>
       </div>
-      <div class="project-cover"><img src={p.cover} alt={p.coverAlt} /></div>
+      <div class="project-cover"><img src={url(p.cover)} alt={p.coverAlt} /></div>
       <div class="project-content">
         <div class="project-col">
           <h2 class="body muted">Overview</h2>
@@ -47,11 +47,11 @@ const hasBody = Boolean(project.body?.trim());
       </div>
     </section>
     <div class="project-showcase-wrap">
-      <div class="project-showcase"><img src={p.showcase} alt={p.showcaseAlt} loading="lazy" /></div>
+      <div class="project-showcase"><img src={url(p.showcase)} alt={p.showcaseAlt} loading="lazy" /></div>
     </div>
     {next && (
       <section class="next-project">
-        <a class="next-link" href={`/projects/${next.id}`} aria-label={`Next project: ${next.data.title}`}>
+        <a class="next-link" href={url(`/projects/${next.id}/`)} aria-label={`Next project: ${next.data.title}`}>
           <span class="next-text">
             <span class="body">{next.data.category}</span>
             <span class="h2">{next.data.title}</span>

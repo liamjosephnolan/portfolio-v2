@@ -1,25 +1,17 @@
 ---
-import { site } from "../../lib/site";
-
-const FADE =
-  "linear-gradient(180deg, #121212 0%, #121212 14%, rgba(18,18,18,0.97) 22%, rgba(18,18,18,0.9) 30%, rgba(18,18,18,0.79) 38%, rgba(18,18,18,0.66) 46%, rgba(18,18,18,0.52) 54%, rgba(18,18,18,0.38) 62%, rgba(18,18,18,0.26) 70%, rgba(18,18,18,0.16) 78%, rgba(18,18,18,0.08) 86%, rgba(18,18,18,0.03) 93%, rgba(18,18,18,0) 100%)";
+import { site, url } from "../../lib/site";
 ---
 <footer class="footer">
-  <div class="footer-shader" aria-hidden="true"><canvas data-shader></canvas></div>
-  <div class="footer-fade" aria-hidden="true" style={`background: ${FADE}`}></div>
   <div class="footer-top container">
     <div class="footer-email">
       <a class="body" href={`mailto:${site.email}`}>{site.email}</a>
-      <div class="footer-available">
-        <span class="footer-dot" aria-hidden="true"></span>
-        <p class="body">Available for work</p>
-      </div>
+      <p class="body muted">{site.location}</p>
     </div>
     <div class="footer-col footer-social">
       {site.socials.map((s) => <a class="body" href={s.href} target="_blank" rel="noreferrer">{s.label}</a>)}
     </div>
     <nav class="footer-col footer-nav" aria-label="Footer">
-      {site.footerNav.map((l) => <a class="body" href={l.href}>{l.label}</a>)}
+      {site.nav.map((l) => <a class="body" href={url(l.href)}>{l.label}</a>)}
     </nav>
   </div>
   <div class="footer-wordmark container" style="font-size: 160px" data-fit>
@@ -32,9 +24,6 @@ const FADE =
 </footer>
 
 <script>
-  import { initShader } from "../../scripts/shader";
-  document.querySelectorAll<HTMLCanvasElement>("[data-shader]").forEach(initShader);
-
   // Framer "auto-fit" text: the wordmark is sized to span the container width.
   document.querySelectorAll<HTMLElement>("[data-fit]").forEach((box) => {
     const probe = box.querySelector<HTMLElement>("[data-probe]")!;

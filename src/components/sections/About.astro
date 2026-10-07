@@ -1,14 +1,14 @@
 ---
-import { site } from "../../lib/site";
+import { site, url } from "../../lib/site";
 import ScrollWords from "../ScrollWords.astro";
 import ScrollFade from "../ScrollFade.astro";
 const { about } = site;
 ---
-<section id="about-alt" class="about">
+<section id="about" class="about">
   <div class="about-stage">
     <div class="about-parallax" data-parallax>
       <div class="about-media">
-        <img src="/assets/portrait.webp" alt={`${site.name}, ${site.role.toLowerCase()}`} loading="lazy" />
+        <img src={url("/assets/portrait.webp")} alt={`${site.name}, ${site.role.toLowerCase()}`} loading="lazy" />
       </div>
     </div>
     <div class="about-scrim" aria-hidden="true"></div>
@@ -23,13 +23,10 @@ const { about } = site;
           <p class="body muted">ABOUT</p>
           <ScrollFade>
             <div class="about-paragraphs">
-              <p class="body balance">{about.bio}</p>
-              <p class="body balance">
-                {about.contactLead} <a href={`mailto:${site.email}`} style="color: var(--white)">{site.email}</a> {about.contactTail}
-              </p>
+              <p class="body balance">{about.bio.join(" ")}</p>
             </div>
           </ScrollFade>
-          <p class="body muted">{site.name.toUpperCase()} — {site.year}</p>
+          <p class="body muted">{site.name.toUpperCase()} — {site.location.toUpperCase()}</p>
         </div>
       </div>
     </div>

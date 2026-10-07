@@ -1,0 +1,59 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      # The resume lives in a private repo. Fetch the PDF into public/ so it is
+      # copied into the build output. It is never committed to this repo.
+      # Without the secret the build still runs and the site shows a placeholder.
+      - name: Fetch resume PDF
+        env:
+          RESUME_TOKEN: ${{ secrets.WEBSITE_REPO_TOKEN }}
+        run: |
+          if [ -z "$RESUME_TOKEN" ]; then
+            echo "::warning::WEBSITE_REPO_TOKEN is not set; building without the resume PDF."
+            exit 0
+          fi
+          mkdir -p public/resume
+          if curl -fsSL \
+              -H "Authorization: Bearer $RESUME_TOKEN" \
+              -H "Accept: application/vnd.github.raw" \
+              -o public/resume/LiamNolanCV.pdf \
+              https://api.github.com/repos/liamjosephnolan/resume/contents/LiamNolanCV.pdf; then
+            echo "Fetched resume ($(stat -c %s public/resume/LiamNolanCV.pdf) bytes)"
+          else
+            echo "::warning::Could not fetch the resume PDF; building without it."
+            rm -f public/resume/LiamNolanCV.pdf
+          fi
+
+      - name: Install, build, and upload site
+        uses: withastro/action@v6
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
