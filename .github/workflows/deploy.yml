@@ -3,6 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Also triggered by the resume repo when LiamNolanCV.pdf changes.
   workflow_dispatch:
 
 permissions:
@@ -39,9 +40,11 @@ jobs:
               -o public/resume/LiamNolanCV.pdf \
               https://api.github.com/repos/liamjosephnolan/resume/contents/LiamNolanCV.pdf; then
             echo "Fetched resume ($(stat -c %s public/resume/LiamNolanCV.pdf) bytes)"
+            # Also serve it at the old site's path so existing links keep working.
+            cp public/resume/LiamNolanCV.pdf public/assets/LiamNolanCV.pdf
           else
             echo "::warning::Could not fetch the resume PDF; building without it."
-            rm -f public/resume/LiamNolanCV.pdf
+            rm -f public/resume/LiamNolanCV.pdf public/assets/LiamNolanCV.pdf
           fi
 
       - name: Install, build, and upload site

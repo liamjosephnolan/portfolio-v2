@@ -15,6 +15,6 @@ heroImage: /assets/work/thesis-cover.webp
 heroAlt: "Desktop teleoperated surgical system"
 ---
 
-[Read the full thesis (PDF)](https://liamjosephnolan.com/assets/thesis.pdf)
+[Read the full thesis (PDF)](/assets/thesis.pdf)
 
 L. Nolan, M. Messner, S. Winkler, and Y. Kim, “Implementation of an Advanced Control System for a Teleoperated Surgical Robot Using ROS 2,” IEEE International Conference on Advanced Robotics and Mechatronics (ICARM), 2026.

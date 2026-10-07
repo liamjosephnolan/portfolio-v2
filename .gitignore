@@ -9,3 +9,4 @@ launch/
 
 # Resume PDF is fetched from the private resume repo at build time (see deploy.yml)
 public/resume/
+public/assets/LiamNolanCV.pdf
