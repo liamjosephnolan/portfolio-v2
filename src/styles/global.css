@@ -96,7 +96,8 @@ button { font: inherit; }
 .about-stage { position: relative; width: 100%; height: 900px; overflow: clip; }
 .about-parallax { position: absolute; left: 0; top: 0; width: 100%; height: 100%; will-change: transform; }
 .about-media { position: absolute; left: 0; top: -220px; width: 100%; height: 1340px; overflow: clip; }
-.about-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.about-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 2% 30%; }
+@media (max-width: 809px) { .about-media img { object-position: 26% 30%; } }
 .about-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(18,18,18,0.55) 0%, rgba(18,18,18,0.12) 42%, rgba(18,18,18,0.78) 100%); }
 .about-content { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 100px 20px; }
 .about-statement-row { display: flex; flex-direction: column; align-items: flex-end; }
