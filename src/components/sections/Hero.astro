@@ -6,6 +6,7 @@ import Icon from "../Icon.astro";
 const projects = await getProjects();
 const slides = projects.map((p) => ({
   src: url(p.data.heroImage),
+  video: p.data.heroVideo && url(p.data.heroVideo),
   alt: p.data.heroAlt,
   category: p.data.category,
   title: p.data.title,
@@ -21,7 +22,11 @@ const n = slides.length;
           <div class="pc-media">
             {slides.map((s, i) => (
               <div class="pc-slide" style={`--i: ${i}`} data-slide>
-                <img src={s.src} alt={s.alt} loading={i === 0 ? "eager" : "lazy"} decoding="async" />
+                {s.video ? (
+                  <video src={s.video} poster={s.src} aria-label={s.alt} muted loop playsinline preload="metadata" data-autoplay></video>
+                ) : (
+                  <img src={s.src} alt={s.alt} loading={i === 0 ? "eager" : "lazy"} decoding="async" />
+                )}
               </div>
             ))}
           </div>
@@ -60,5 +65,7 @@ const n = slides.length;
 
 <script>
   import { initCarousel } from "../../scripts/carousel";
+  import { autoplayVideos } from "../../scripts/lib";
   document.querySelectorAll<HTMLElement>("[data-carousel]").forEach(initCarousel);
+  autoplayVideos();
 </script>

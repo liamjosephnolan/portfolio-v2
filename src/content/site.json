@@ -1,44 +1,82 @@
 {
   "name": "Liam Nolan",
-  "role": "Senior Mechatronics Engineer",
-  "tagline": "Mechatronics engineer developing complex robotic systems, from surgical robots to construction robotics. Based in Bergen, Norway.",
-  "description": "Liam Nolan, Senior Mechatronics Engineer in Bergen, Norway. Robotics work in construction and surgical systems, resume and side projects.",
+  "role": "Senior Mechatronics Engineer | Industrial PhD Candidate",
+  "tagline": "Mechatronics engineer with 6+ years in surgical and construction robotics. I take robotic systems from concept to field test. Based in Bergen, Norway.",
+  "description": "Liam Nolan, Senior Mechatronics Engineer at Rockslice and industrial PhD candidate at NTNU. Surgical and construction robotics: mechanical design, controls, firmware and manufacturing.",
   "location": "Bergen, Norway",
   "email": "liamjosephnolan@gmail.com",
   "year": "2026",
   "nav": [
-    { "label": "Work", "href": "/#hero" },
-    { "label": "About", "href": "/#about" },
-    { "label": "Resume", "href": "/#resume" },
-    { "label": "Side projects", "href": "/#side-projects" },
-    { "label": "Contact", "href": "/#contact" }
+    {
+      "label": "Work",
+      "href": "/#hero"
+    },
+    {
+      "label": "About",
+      "href": "/#about"
+    },
+    {
+      "label": "Resume",
+      "href": "/#resume"
+    },
+    {
+      "label": "Side projects",
+      "href": "/#side-projects"
+    },
+    {
+      "label": "Contact",
+      "href": "/#contact"
+    }
   ],
   "socials": [
-    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/liam-nolan-5926131a1" },
-    { "label": "GitHub", "href": "https://github.com/liamjosephnolan" }
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/liam-nolan-5926131a1"
+    },
+    {
+      "label": "GitHub",
+      "href": "https://github.com/liamjosephnolan"
+    }
   ],
   "about": {
-    "statement": "I design, build and test robotic systems, from surgical robots to machines that cut rock and concrete",
+    "statement": "I take robotic systems from concept to field test: mechanical design, controls, firmware, and manufacturing",
     "bio": [
-      "I’m Liam, a Senior Mechatronics Engineer at Rockslice in Bergen, Norway, where I work on robotic rock and concrete cutting.",
-      "From 2019 to 2023 I was a mechanical engineer at Ethicon and Auris Health (Johnson & Johnson), designing, testing and integrating subsystems for a laparoscopic surgical robot.",
-      "I hold an M.Sc. in Mechatronics from MCI Innsbruck and a B.Sc. in Aerospace Engineering from Cal Poly San Luis Obispo.",
-      "Outside work I enjoy overhung crimp boulders, ski touring, and most of all: robotics."
+      "I’m Liam, a mechatronics engineer with 6+ years in surgical and construction robotics, based in Bergen, Norway.",
+      "I was the first engineering hire at Rockslice, where I build explosive-free robotic rock and concrete cutting, and I am an industrial PhD candidate at NTNU’s Field Robotics Lab, working on advanced control and material sensing for that platform.",
+      "Before that I was an early engineer on Johnson & Johnson’s Ottava surgical robot at Ethicon (formerly Auris).",
+      "I hold an M.Sc. in Mechatronics from MCI Innsbruck and a B.Sc. in Aerospace Engineering from Cal Poly San Luis Obispo."
     ]
   },
   "resume": {
     "heading": "Resume",
-    "summary": "Mechatronics engineer with professional experience developing complex robotic systems. Previously specialising in medical robotics, now developing construction robotics at Rockslice.",
+    "summary": "Mechatronics engineer with 6+ years in surgical and construction robotics, now pursuing an industrial PhD in robot control and material sensing.",
     "file": "/resume/LiamNolanCV.pdf",
     "facts": [
-      { "label": "Now", "value": "Senior Mechatronics Engineer, Rockslice (2025 – present)" },
-      { "label": "Before", "value": "Mechanical Engineer, Ethicon / Auris Health (2019 – 2023)" },
-      { "label": "Education", "value": "M.Sc. Mechatronics, MCI Innsbruck · B.Sc. Aerospace Engineering, Cal Poly SLO" }
+      {
+        "label": "Now",
+        "value": "Senior Mechatronics Engineer, Rockslice (Sept 2025 – present)"
+      },
+      {
+        "label": "PhD",
+        "value": "Industrial PhD Candidate, NTNU Field Robotics Lab, with Rockslice (Autumn 2026 – present)"
+      },
+      {
+        "label": "Before",
+        "value": "Mechanical Engineer, Ethicon (formerly Auris), J&J Ottava program (2019 – 2023)"
+      },
+      {
+        "label": "Education",
+        "value": "M.Sc. Mechatronics, MCI Innsbruck · B.Sc. Aerospace Engineering, Cal Poly SLO"
+      },
+      {
+        "label": "Publications & patents",
+        "value": "IEEE ICARM 2026 (first author) · Patents US20230390010A1, WO2023238053A1"
+      }
     ]
   },
   "sideProjects": {
     "heading": "Side projects",
-    "text": "Things I have built in my spare time and at university over the years."
+    "text": "Things I have built in my spare time, at university and in FIRST Robotics, BattleBots and PolySat."
   },
   "contact": {
     "heading": "Want to get in touch? Reach out with questions or opportunities",

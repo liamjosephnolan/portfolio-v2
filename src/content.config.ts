@@ -19,8 +19,12 @@ const projects = defineCollection({
     coverAlt: z.string(),
     showcase: z.string(),
     showcaseAlt: z.string(),
+    // Optional looping clip shown instead of the showcase image (image is the poster).
+    showcaseVideo: z.string().optional(),
     heroImage: z.string(),
     heroAlt: z.string(),
+    // Optional looping clip for the carousel slide (heroImage is the poster).
+    heroVideo: z.string().optional(),
   }),
 });
 

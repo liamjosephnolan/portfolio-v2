@@ -47,7 +47,13 @@ const hasBody = Boolean(project.body?.trim());
       </div>
     </section>
     <div class="project-showcase-wrap">
-      <div class="project-showcase"><img src={url(p.showcase)} alt={p.showcaseAlt} loading="lazy" /></div>
+      <div class="project-showcase">
+        {p.showcaseVideo ? (
+          <video src={url(p.showcaseVideo)} poster={url(p.showcase)} aria-label={p.showcaseAlt} muted loop playsinline preload="metadata" data-autoplay></video>
+        ) : (
+          <img src={url(p.showcase)} alt={p.showcaseAlt} loading="lazy" />
+        )}
+      </div>
     </div>
     {next && (
       <section class="next-project">
@@ -64,3 +70,8 @@ const hasBody = Boolean(project.body?.trim());
   </main>
   <Footer />
 </Base>
+
+<script>
+  import { autoplayVideos } from "../../scripts/lib";
+  autoplayVideos();
+</script>

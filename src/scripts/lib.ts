@@ -10,6 +10,22 @@ export const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: r
 
 export const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
 
+/**
+ * Play muted looping clips marked data-autoplay while they are on screen.
+ * With reduced motion they stay on their poster frame.
+ */
+export function autoplayVideos() {
+  if (reducedMotion()) return;
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      const v = e.target as HTMLVideoElement;
+      if (e.isIntersecting) v.play().catch(() => {});
+      else v.pause();
+    }
+  });
+  document.querySelectorAll<HTMLVideoElement>("video[data-autoplay]").forEach((v) => io.observe(v));
+}
+
 /** Smooth scroll to an absolute page offset (lenis-aware). */
 export function scrollToY(y: number) {
   const l = window.__lenis;

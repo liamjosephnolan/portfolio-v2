@@ -192,7 +192,7 @@ button { font: inherit; }
 .pc-slide { position: absolute; inset: 0; margin: auto; width: min(80%, 1400px); height: 68vh; border-radius: 20px; overflow: hidden; transform: translate3d(0, calc(var(--i) * var(--sp) * 1vh), 0); will-change: transform; }
 @media (max-width: 1199px) { .pc-slide { width: 84%; height: 58vh; } }
 @media (max-width: 809px) { .pc-slide { width: 92%; height: 50vh; } }
-.pc-slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pc-slide img, .pc-slide video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .pc-slide::after { content: ""; position: absolute; inset: 0; background: rgba(18, 18, 18, 0.4); }
 .pc-overlays { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 .pc-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; padding: 24px; text-align: center; }
@@ -218,9 +218,11 @@ button { font: inherit; }
 .project-meta { display: flex; justify-content: center; gap: 48px; text-align: start; }
 .project-meta-col { display: flex; flex-direction: column; gap: 6px; }
 .project-cover { width: 100%; max-width: 1160px; height: 700px; border-radius: 8px; overflow: hidden; }
-.project-cover img, .project-showcase img { width: 100%; height: 100%; object-fit: cover; }
+.project-cover img, .project-showcase img, .project-showcase video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .project-md { display: flex; flex-direction: column; gap: 12px; }
-.project-md p { font-size: 16px; letter-spacing: -0.02em; line-height: 1.4em; color: var(--grey); }
+.project-md ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+.project-md a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+.project-md p, .project-md li { font-size: 16px; letter-spacing: -0.02em; line-height: 1.4em; color: var(--grey); }
 .project-content { width: 100%; max-width: 1160px; display: flex; gap: 20px; }
 .project-col { flex: 1; display: flex; flex-direction: column; gap: 12px; }
 .project-showcase-wrap { padding: 0 20px; display: flex; justify-content: center; }
