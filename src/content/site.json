@@ -1,8 +1,8 @@
 {
   "name": "Liam Nolan",
-  "role": "Senior Mechatronics Engineer | Industrial PhD Candidate",
-  "tagline": "Mechatronics engineer with 6+ years in surgical and construction robotics. I take robotic systems from concept to field test. Based in Bergen, Norway.",
-  "description": "Liam Nolan, Senior Mechatronics Engineer at Rockslice and industrial PhD candidate at NTNU. Surgical and construction robotics: mechanical design, controls, firmware and manufacturing.",
+  "role": "Senior Mechatronics Engineer @ Rockslice · PhD Candidate @ NTNU",
+  "tagline": "Senior Mechatronics Engineer working full time at Rockslice, and an industrial PhD candidate at NTNU. 6+ years in surgical and construction robotics. Based in Bergen, Norway.",
+  "description": "Liam Nolan, Senior Mechatronics Engineer at Rockslice, working full time while pursuing an industrial PhD at NTNU. Surgical and construction robotics: mechanical design, controls, firmware and manufacturing.",
   "location": "Bergen, Norway",
   "email": "liamjosephnolan@gmail.com",
   "year": "2026",
@@ -31,7 +31,7 @@
   "socials": [
     {
       "label": "LinkedIn",
-      "href": "https://www.linkedin.com/in/liam-nolan-5926131a1"
+      "href": "https://www.linkedin.com/in/liamjosephnolan"
     },
     {
       "label": "GitHub",
@@ -42,27 +42,27 @@
     "statement": "I take robotic systems from concept to field test: mechanical design, controls, firmware, and manufacturing",
     "bio": [
       "I’m Liam, a mechatronics engineer with 6+ years in surgical and construction robotics, based in Bergen, Norway.",
-      "I was the first engineering hire at Rockslice, where I build explosive-free robotic rock and concrete cutting, and I am an industrial PhD candidate at NTNU’s Field Robotics Lab, working on advanced control and material sensing for that platform.",
-      "Before that I was an early engineer on Johnson & Johnson’s Ottava surgical robot at Ethicon (formerly Auris).",
-      "I hold an M.Sc. in Mechatronics from MCI Innsbruck and a B.Sc. in Aerospace Engineering from Cal Poly San Luis Obispo."
+      "I work full time as a Senior Mechatronics Engineer at Rockslice, where I was the first engineering hire and build explosive-free robotic rock and concrete cutting.",
+      "Alongside that I am pursuing an industrial PhD through NTNU’s Field Robotics Lab, in partnership with Rockslice, on advanced control and material sensing for the cutting platform.",
+      "Before that I was a mechanical engineer at Ethicon (formerly Auris), working on Johnson & Johnson’s Ottava surgical robot, and I hold an M.Sc. in Mechatronics from MCI Innsbruck and a B.Sc. in Aerospace Engineering from Cal Poly San Luis Obispo."
     ]
   },
   "resume": {
     "heading": "Resume",
-    "summary": "Mechatronics engineer with 6+ years in surgical and construction robotics, now pursuing an industrial PhD in robot control and material sensing.",
+    "summary": "Mechatronics engineer with 6+ years in surgical and construction robotics, working full time at Rockslice while pursuing an industrial PhD at NTNU.",
     "file": "/resume/LiamNolanCV.pdf",
     "facts": [
       {
-        "label": "Now",
+        "label": "Full time",
         "value": "Senior Mechatronics Engineer, Rockslice (Sept 2025 – present)"
       },
       {
-        "label": "PhD",
-        "value": "Industrial PhD Candidate, NTNU Field Robotics Lab, with Rockslice (Autumn 2026 – present)"
+        "label": "Alongside",
+        "value": "Industrial PhD Candidate, NTNU Field Robotics Lab, in partnership with Rockslice (Autumn 2026 – present)"
       },
       {
         "label": "Before",
-        "value": "Mechanical Engineer, Ethicon (formerly Auris), J&J Ottava program (2019 – 2023)"
+        "value": "Mechanical Engineer, Ethicon (formerly Auris), Ottava surgical robot (2019 – 2023)"
       },
       {
         "label": "Education",
@@ -90,5 +90,9 @@
     "/assets/side/edge_detect.webp",
     "/assets/side/isx.webp",
     "/assets/side/active_system.webp"
+  ],
+  "roles": [
+    "Senior Mechatronics Engineer @ Rockslice",
+    "PhD Candidate @ NTNU"
   ]
 }

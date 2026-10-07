@@ -69,7 +69,7 @@ button { font: inherit; }
   transition: height 0.45s var(--ease-out), opacity 0.45s var(--ease-out);
 }
 .topbar-mobile.is-open { height: 100vh; height: 100dvh; opacity: 0.999; }
-@media (max-width: 809px) { .topbar-links { display: none; } .topbar-menu { display: block; } }
+@media (max-width: 809px) { .topbar-links { display: none; } .topbar-menu { display: block; } .topbar-logo .muted { font-size: 13px; white-space: nowrap; } }
 .topbar-links a, .topbar-mobile a { color: var(--white-60); }
 .topbar-links a.is-current, .topbar-mobile a.is-current { color: var(--white); }
 @media (hover: hover) and (pointer: fine) { .topbar-links a { transition: color 0.2s ease; } .topbar-links a:hover { color: var(--white); } }
